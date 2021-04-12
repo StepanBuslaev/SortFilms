@@ -6,12 +6,15 @@
     width: 300px;
 }
 
-.item-year {
+.item-year{
     text-align: center;
     width: 100px;
 }
 
-/* .item-rating TODO ... */
+.item-rating {
+    text-align: left;
+    width: 100px;
+}
 
 .container {
     display: inline-block;
