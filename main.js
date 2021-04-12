@@ -1,10 +1,10 @@
 var data = [
-	{ id: 1, title: "The Shawshank Redemption", year: 1994, votes: 678790, rating: 9.2, rank: 1 },
-	{ id: 2, title: "The Godfather", year: 1972, votes: 511495, rating: 9.2, rank: 2 },
-	{ id: 3, title: "The Godfather: Part II", year: 1974, votes: 319352, rating: 9.0, rank: 3 },
+	{ id: 1, title: "The Shawshank Redemption", year: 1994, votes: 678790, rating: 5.7, rank: 1 },
+	{ id: 2, title: "The Godfather", year: 1972, votes: 511495, rating: 2.8, rank: 2 },
+	{ id: 3, title: "The Godfather: Part II", year: 1974, votes: 319352, rating: 9.1, rank: 3 },
 	{ id: 4, title: "The Good, the Bad and the Ugly", year: 1966, votes: 213030, rating: 8.9, rank: 4 },
-	{ id: 6, title: "12 Angry Men", year: 1957, votes: 164558, rating: 8.9, rank: 6 },
-	{ id: 5, title: "My Fair Lady", year: 1964, votes: 533848, rating: 8.9, rank: 5 }
+	{ id: 6, title: "12 Angry Men", year: 1957, votes: 164558, rating: 3.7, rank: 6 },
+	{ id: 5, title: "My Fair Lady", year: 1964, votes: 533848, rating: 7.3, rank: 5 }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -34,12 +34,8 @@ function refresh(data) {
 
 // функция сортировки фильмов по году
 function sortByRating(data) {
-	let sortedData = []
-
-	/**
-	 * сортировка data по полю rating
-	 * TODO ...
-	 */
+	// сортировка фильмов по рейтингу от самого высокого к самому низкому
+	let sortedData = data.slice(0, data.length).sort((previous, next) => next.rating - previous.rating);
 
 	return sortedData
 }
@@ -61,16 +57,17 @@ function createElement(item) {
 	divYear.className = "item-year";
 	divYear.innerHTML = item.year;
 
-	// ячейка рейтинга фильма
-	/**
-	 * TODO ...
-	 */
+	// ячейка рейтинг фильма
+	var divRating = document.createElement('div');
+	divRating.className = "item-rating";
+	divRating.innerHTML = item.rating;
 
 	// строка фильма
 	var divItemContainer = document.createElement('div');
 	divItemContainer.className = "row item disable-selection";
 	divItemContainer.appendChild(divTitle);
 	divItemContainer.appendChild(divYear);
+	divItemContainer.appendChild(divRating)
 	divItemContainer.id = 'film_' + item.id;
 
 	return divItemContainer;
